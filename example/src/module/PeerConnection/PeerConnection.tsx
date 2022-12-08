@@ -50,8 +50,8 @@ export const PeerConnectionProvider: FC = ({ children }) => {
 
   const onMessageReceived = useCallback((messageString: string) => {
     try {
-      const decryptedMessageString = decrypt(messageString, encryptionKeyRef.current);
-      const message = JSON.parse(decryptedMessageString);
+      //const decryptedMessageString = decrypt(messageString, encryptionKeyRef.current);
+      const message = JSON.parse(messageString);
       peerConnectionSubject.next(message);
     } catch (error) {
       console.error(error);
@@ -100,9 +100,9 @@ export const PeerConnectionProvider: FC = ({ children }) => {
     if (!peerConnectionRef.current) return;
 
     const messageString = JSON.stringify(message);
-    const encryptedMessageString = encrypt(messageString, encryptionKeyRef.current);
+    //const encryptedMessageString = encrypt(messageString, encryptionKeyRef.current);
 
-    peerConnectionRef.current.sendMessage(encryptedMessageString);
+    peerConnectionRef.current.sendMessage(messageString);
   }, []);
 
   const localConnectionDescription: ConnectionDescription | undefined = useMemo(
