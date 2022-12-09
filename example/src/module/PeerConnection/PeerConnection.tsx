@@ -1,7 +1,7 @@
 import React, { createContext, FC, useState, useRef, useCallback, useEffect, useContext, useMemo } from 'react';
 import { Subject } from 'rxjs';
 
-import { generateKey, decrypt, encrypt } from '../../util/encryption';
+import { generateKey } from '../../util/encryption';
 import { createPeerConnection, CreatePeerConnectionResponse } from '../../typescript-lib';
 
 export type ConnectionDescription = {
